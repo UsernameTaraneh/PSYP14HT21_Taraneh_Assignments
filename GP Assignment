@@ -1,0 +1,56 @@
+library(psych)
+library(cabootcrs)
+library(ggplot2)
+
+sex <- "PAQ_Taraneh"[c(1:300), 3]
+age <- "PAQ_Taraneh"[c(301:600), 3]
+Q1_cry <- "PAQ_Taraneh"[c(601:900), 3]
+Q2_help <- "PAQ_Taraneh"[c(901:1200), 3]
+Q3_breathe <- "PAQ_Taraneh"[c(1201:1500), 3]
+Q4_freeze <- "PAQ_Taraneh"[c(1501:1800), 3]
+Q5_alien <- "PAQ_Taraneh"[c(1801:2100), 3]
+Q6_inferior <- "PAQ_Taraneh"[c(2101:2400), 3]
+Q7_weep<- "PAQ_Taraneh"[c(2401:2700), 3]
+Q8_support<- "PAQ_Taraneh"[c(2701:3000), 3]
+Q9_nerd<- "PAQ_Taraneh"[c(3001:3300), 3]
+
+PAQ_data <- data.frame(Q1_cry, Q2_help, Q3_breathe, Q4_freeze, Q5_alien, Q6_inferior, Q7_weep, Q8_support, Q9_nerd, sex, age)
+summary(PAQ_data)
+
+#Omit na's
+pca1 <- na.omit(PAQ_data)
+
+#Descriptive statistics, in particular means and standard deviation
+summary(pca1)
+describe(pca1)
+
+#Inspect the covariance and the correlation matrix
+cov_pca1 <- cov(pca1, y = NULL, use = "everything", method = "pearson")
+cov_pca1
+cor_pca1 <- cor(pca1, y = NULL, use = "everything", method = "pearson")
+cor_pca1
+
+# PCA and the loadings
+# Standard deviation and cumulative proportion of variance
+pca <- princomp(pca1, cor=T)
+summary(pca, loadings = TRUE)
+
+#scree plot variances
+screeplot(pca, main ="Screeplot")
+
+#visualizing with plots
+plot(pca$scores[,1], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+plot(pca$scores[,2], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+plot(pca$scores[,3], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+plot(pca$scores[,4], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+
+#Barplot
+barplot(pca$scores[,1], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+barplot(pca$scores[,2], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+barplot(pca$scores[,3], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+barplot(pca$scores[,4], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+
+#Biplot
+biplot1 <- biplot(pca,scale=0, cex=.6)
+biplot1
+
