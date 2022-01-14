@@ -40,15 +40,15 @@ screeplot(pca, main ="Screeplot")
 
 #visualizing with plots
 plot(pca$scores[,1], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-plot(pca$scores[,2], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-plot(pca$scores[,3], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-plot(pca$scores[,4], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+plot(pca$scores[,2], xlab = "participant", ylab = "Comp2", main = "Component scores for each participant")
+plot(pca$scores[,3], xlab = "participant", ylab = "Comp3", main = "Component scores for each participant")
+plot(pca$scores[,4], xlab = "participant", ylab = "Comp4", main = "Component scores for each participant")
 
 #Barplot
 barplot(pca$scores[,1], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-barplot(pca$scores[,2], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-barplot(pca$scores[,3], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
-barplot(pca$scores[,4], xlab = "participant", ylab = "Comp1", main = "Component scores for each participant")
+barplot(pca$scores[,2], xlab = "participant", ylab = "Comp2", main = "Component scores for each participant")
+barplot(pca$scores[,3], xlab = "participant", ylab = "Comp3", main = "Component scores for each participant")
+barplot(pca$scores[,4], xlab = "participant", ylab = "Comp4", main = "Component scores for each participant")
 
 #Biplot
 biplot1 <- biplot(pca,scale=0, cex=.6)
